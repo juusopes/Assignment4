@@ -24,6 +24,8 @@ public class MongoDbRepository : IRepository
 
     public async Task<Player> CreatePlayer(Player player)
     {
+        DateTime localDate = DateTime.UtcNow;
+
         var newPlayer = new Player
         {
             Id = player.Id,
@@ -31,16 +33,13 @@ public class MongoDbRepository : IRepository
             Score = 0,
             Level = 0,
             IsBanned = false,
-            CreationTime = DateTime.Now
+            CreationTime = localDate
         };
 
         string output = JsonConvert.SerializeObject(newPlayer);
         File.AppendAllText(path, output);
 
         return await Task.FromResult<Player>(newPlayer);
-
-        // await _playerCollection.InsertOneAsync(player);
-        // return player;
     }
 
     public async Task<Player[]> GetAllPlayers()
@@ -58,6 +57,8 @@ public class MongoDbRepository : IRepository
 
     public Task<Player> Create(Player player)
     {
+        DateTime localDate = DateTime.UtcNow;
+
         var newPlayer = new Player
         {
             Id = player.Id,
@@ -65,7 +66,7 @@ public class MongoDbRepository : IRepository
             Score = 0,
             Level = 0,
             IsBanned = false,
-            CreationTime = DateTime.Now
+            CreationTime = localDate
         };
 
         string output = JsonConvert.SerializeObject(newPlayer);
@@ -76,12 +77,14 @@ public class MongoDbRepository : IRepository
 
     public Task<Item> CreateItem(Guid playerId, Item item)
     {
+        DateTime localDate = DateTime.UtcNow;
+
         var newItem = new Item
         {
             Id = item.Id,
             Level = 0,
             Type = 0,
-            CreationTime = DateTime.Now
+            CreationTime = localDate
         };
 
         string jsonToBeDeserialized = System.IO.File.ReadAllText(path);
