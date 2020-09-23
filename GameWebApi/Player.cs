@@ -8,4 +8,6 @@ public class Player
     public int Level { get; set; }
     public bool IsBanned { get; set; }
     public DateTime CreationTime { get; set; }
+
+    public Item[] Items { get; set; }
 }

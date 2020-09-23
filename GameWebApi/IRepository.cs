@@ -10,10 +10,9 @@ public interface IRepository
     Task<Player> Modify(Guid id, ModifiedPlayer player);
     Task<Player> Delete(Guid id);
 
-    Task<Item> CreateItem(Guid id, Item item);
-    Task<Item> GetItem(Guid id, Guid itemId);
-    Task<Item[]> GetAllItems(Guid id);
-    Task<Item> UpdateItem(Guid id, Item item);
-    Task<Item> DeleteItem(Guid id, Item item);
-    Task CreateItem();
+    Task<Item> CreateItem(Guid playerId, Item item);
+    Task<Item> GetItem(Guid playerId, Guid itemId);
+    Task<Item[]> GetAllItems(Guid playerId);
+    Task<Item> UpdateItem(Guid playerId, Item item);
+    Task<Item> DeleteItem(Guid playerId, Item item);
 }
